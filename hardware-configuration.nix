@@ -35,16 +35,38 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "zroot/root";
-    fsType = "zfs";
+    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    fsType = "btrfs";
+    options = [ "subvol=root" ];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    fsType = "btrfs";
+    options = [ "subvol=nix" ];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
+
+  fileSystems."/var" = {
+    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    fsType = "btrfs";
+    options = [ "subvol=var" ];
   };
 
   fileSystems."/data" = {
-    device = "zroot/data";
-    fsType = "zfs";
+    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    fsType = "btrfs";
+    options = [ "subvol=data" ];
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/bf82d1d9-f61b-48b7-b1ab-605240561086"; }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
