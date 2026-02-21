@@ -2,17 +2,17 @@
   disko.devices = {
     disk = {
       sda = {
-        type = "disk";
         device = "/dev/sda";
+        type = "disk";
         content = {
-          type = "table";
-          format = "msdos"; # This is the MBR requirement
+          type = "gpt";
           partitions = {
-            # In MBR, we define partitions as an attribute set
-            primary = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # BIOS boot partition for GRUB on GPT
+            };
+            zfs = {
               size = "100%";
-              part-type = "primary";
-              bootable = true;
               content = {
                 type = "zfs";
                 pool = "zroot";
@@ -25,13 +25,18 @@
     zpool = {
       zroot = {
         type = "zpool";
+        rootFsOptions = {
+          compression = "zstd";
+          acltype = "posixacl";
+          xattr = "sa";
+        };
         datasets = {
           "root" = {
             type = "zfs_fs";
             mountpoint = "/";
             options."com.sun:auto-snapshot" = "true";
           };
-          # This is your requested data subvolume
+          # Your requested data subvolume
           "data" = {
             type = "zfs_fs";
             mountpoint = "/data";
