@@ -35,7 +35,7 @@ while IFS= read -r -d '' file; do
     header="/*
   $rel_path
 
-  part of duncker-home-server
+  part of der-home-server
   created $created_date
 */"
 

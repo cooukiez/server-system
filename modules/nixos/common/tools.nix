@@ -1,3 +1,10 @@
+/*
+  modules/nixos/common/tools.nix
+
+  part of der-home-server
+  created 2026-02-21
+*/
+
 {
   pkgs,
   ...
