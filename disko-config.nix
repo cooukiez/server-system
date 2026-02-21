@@ -1,76 +1,54 @@
-/*
-  disko-config.nix
-
-  part of der-home-server
-  created 2026-02-21
-*/
-
 {
-  lib,
-  ...
-}:
-{
-  disko.devices.disk = {
-    lvl-disk = {
-      type = "disk";
-      device = "/dev/sda";
-      content = {
-        type = "table";
-        format = "msdos";
-        partitions = [
-          {
-            name = "nixos";
-            part-type = "primary";
-            size = "100%";
-            bootable = true;
-            content = {
-              type = "btrfs";
-              extraArgs = [ "--force" ];
-              subvolumes = {
-                "root" = {
-                  mountpoint = "/";
-                  mountOptions = [
-                    "subvol=root"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [
-                    "subvol=nix"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "home" = {
-                  mountpoint = "/home";
-                  mountOptions = [
-                    "subvol=home"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "var" = {
-                  mountpoint = "/var";
-                  mountOptions = [
-                    "subvol=var"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "data" = {
-                  mountpoint = "/data";
-                  mountOptions = [
-                    "subvol=data"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
+  disko.devices = {
+    disk = {
+      sda = {
+        type = "disk";
+        device = "/dev/sda";
+        content = {
+          type = "table";
+          format = "msdos";
+          partitions = [
+            {
+              name = "zfs";
+              size = "100%";
+              part-type = "primary";
+              bootable = true;
+              content = {
+                type = "zfs";
+                pool = "zroot";
               };
-            };
-          }
-        ];
+            }
+          ];
+        };
+      };
+    };
+    zpool = {
+      zroot = {
+        type = "zpool";
+
+        rootFsOptions = {
+          compression = "zstd";
+          acltype = "posixacl";
+          xattr = "sa";
+          "com.sun:auto-snapshot" = "false";
+        };
+        mountpoint = "/";
+        postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank";
+
+        datasets = {
+          "local" = {
+            type = "zfs_dataset";
+            mountpoint = "/local";
+          };
+          "local/nix" = {
+            type = "zfs_dataset";
+            mountpoint = "/nix";
+          };
+          "data" = {
+            type = "zfs_dataset";
+            mountpoint = "/data";
+          };
+        };
       };
     };
   };
