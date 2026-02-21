@@ -77,7 +77,7 @@
 
   # boot settings
   boot = {
-    kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
+    kernelPackages = pkgs.linuxPackages;
     supportedFilesystems = [ "zfs" ];
     consoleLogLevel = 0;
     initrd.verbose = false;
