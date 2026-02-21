@@ -23,8 +23,8 @@
     ./hardware-configuration.nix
 
     # import other system configuration modules
-    inputs.self.nixosModules.common
-    inputs.self.nixosModules.services
+    # inputs.self.nixosModules.common
+    # inputs.self.nixosModules.services
 
     inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
@@ -44,7 +44,6 @@
     config = {
       # allow unfree packages
       allowUnfree = true;
-      allowBroken = true;
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
@@ -77,8 +76,7 @@
 
   # boot settings
   boot = {
-    kernelPackages = pkgs.linuxPackages;
-    supportedFilesystems = [ "zfs" ];
+    kernelPackages = pkgs.linuxPackages_zen;
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
@@ -86,7 +84,6 @@
         enable = true;
         device = "/dev/sda";
         useOSProber = true;
-        zfsSupport = true;
         # we boot legacy bios
         efiSupport = false;
       };
@@ -108,8 +105,6 @@
   # hostname
   networking = {
     hostName = hostname;
-    hostId = "8425e349";
-
     useDHCP = false;
     interfaces.eth0.ipv4.addresses = [
       {
@@ -154,18 +149,16 @@
       "docker"
     ];
     password = "CHANGE-ME";
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
   }) users;
 
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
   # swap configuration
-  /*
-    swapDevices = [
-      { device = "/dev/disk/by-partlabel/swap"; }
-    ];
-  */
+  swapDevices = [
+    { device = "/dev/disk/by-partlabel/swap"; }
+  ];
 
   # zram configuration
   zramSwap.enable = true;
