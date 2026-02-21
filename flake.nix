@@ -1,3 +1,5 @@
+# duncker home server configuration
+
 # start config from https://github.com/Misterio77/nix-starter-configs
 # inspired by https://github.com/AlexNabokikh/nix-config
 
