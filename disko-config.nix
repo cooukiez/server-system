@@ -10,7 +10,8 @@
           partitions = [
             {
               name = "zfs";
-              size = "100%";
+              start = "1M";
+              end = "100%";
               part-type = "primary";
               bootable = true;
               content = {
