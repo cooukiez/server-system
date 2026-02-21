@@ -20,7 +20,7 @@
         partitions = [
           {
             name = "nixos";
-            partType = "primary";
+            part-type = "primary";
             size = "100%";
             bootable = true;
             content = {
