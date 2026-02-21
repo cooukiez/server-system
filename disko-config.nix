@@ -10,30 +10,15 @@
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";
-
       device = "/dev/sda";
       content = {
-        type = "gpt";
+        type = "table";
+        format = "msdos";
         partitions = {
-          ESP = {
-            type = "EF00";
-            size = "1G";
-            label = "esp";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-              mountOptions = [ "umask=0077" ];
-            };
-          };
-          swap = {
-            type = "8200";
-            size = "32G";
-            label = "swap";
-          };
           nixos = {
             size = "100%";
             label = "nixos";
+            bootable = true;
             content = {
               type = "btrfs";
               extraArgs = [ "--force" ];
@@ -80,6 +65,12 @@
                 };
               };
             };
+          };
+
+          swap = {
+            type = "8200";
+            size = "32G";
+            label = "swap";
           };
         };
       };

@@ -13,6 +13,7 @@
   pkgs,
   lib,
   hostname,
+  staticIP,
   users,
   ...
 }:
@@ -78,14 +79,19 @@
     kernelPackages = pkgs.linuxPackages_zen;
     consoleLogLevel = 0;
     initrd.verbose = false;
+    loader = {
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+        useOSProber = true;
+      };
+      timeout = 0;
+    };
     kernelParams = [
       "quiet"
       "rd.udev.log_level=3"
       "boot.shell_on_fail"
     ];
-    loader.efi.canTouchEfiVariables = true;
-    loader.systemd-boot.enable = true;
-    loader.timeout = 0;
   };
 
   # disable systemd services that are affecting the boot time
@@ -95,7 +101,18 @@
   };
 
   # hostname
-  networking.hostName = hostname;
+  networking = {
+    hostName = hostname;
+    useDHCP = false;
+    interfaces.eth0.ipv4.addresses = [
+      {
+        address = staticIP;
+        prefixLength = 24;
+      }
+    ];
+    defaultGateway = "192.168.178.1";
+    nameservers = [ "1.1.1.1" ];
+  };
 
   # timezone
   time.timeZone = "Europe/Berlin";
