@@ -16,7 +16,7 @@
         partitions = {
           boot = {
             type = "EF02";
-            size = "1M";
+            size = "512M";
             label = "boot";
           };
           nixos = {
