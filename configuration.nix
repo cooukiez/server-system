@@ -154,9 +154,11 @@
   security.sudo.wheelNeedsPassword = false;
 
   # swap configuration
-  swapDevices = [
-    { device = "/dev/disk/by-partlabel/swap"; }
-  ];
+  /*
+    swapDevices = [
+      { device = "/dev/disk/by-partlabel/swap"; }
+    ];
+  */
 
   # zram configuration
   zramSwap.enable = true;

@@ -5,23 +5,24 @@
   created 2026-02-21
 */
 
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 {
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";
       device = "/dev/sda";
       content = {
-        type = "gpt";
-        partitions = {
-          boot = {
-            type = "EF02";
-            size = "512M";
-            label = "boot";
-          };
-          nixos = {
+        type = "table";
+        format = "msdos";
+        partitions = [
+          {
+            name = "nixos";
+            partType = "primary";
             size = "100%";
-            label = "nixos";
+            bootable = true;
             content = {
               type = "btrfs";
               extraArgs = [ "--force" ];
@@ -68,14 +69,8 @@
                 };
               };
             };
-          };
-
-          swap = {
-            type = "8200";
-            size = "32G";
-            label = "swap";
-          };
-        };
+          }
+        ];
       };
     };
   };
