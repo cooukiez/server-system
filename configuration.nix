@@ -77,6 +77,7 @@
   # boot settings
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
+    supportedFilesystems = [ "zfs" ];
     consoleLogLevel = 0;
     initrd.verbose = false;
     loader = {
@@ -84,6 +85,9 @@
         enable = true;
         device = "/dev/sda";
         useOSProber = true;
+        zfsSupport = true;
+        # we boot legacy bios
+        efiSupport = false;
       };
       timeout = 0;
     };
@@ -103,6 +107,8 @@
   # hostname
   networking = {
     hostName = hostname;
+    hostId = "8425e349";
+
     useDHCP = false;
     interfaces.eth0.ipv4.addresses = [
       {
