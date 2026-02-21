@@ -44,6 +44,7 @@
     config = {
       # allow unfree packages
       allowUnfree = true;
+      allowBroken = true;
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
@@ -76,7 +77,7 @@
 
   # boot settings
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
     supportedFilesystems = [ "zfs" ];
     consoleLogLevel = 0;
     initrd.verbose = false;
