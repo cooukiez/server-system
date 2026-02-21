@@ -12,13 +12,16 @@
       type = "disk";
       device = "/dev/sda";
       content = {
-        type = "table";
-        format = "msdos";
+        type = "gpt";
         partitions = {
+          boot = {
+            type = "EF02";
+            size = "1M";
+            label = "boot";
+          };
           nixos = {
             size = "100%";
             label = "nixos";
-            bootable = true;
             content = {
               type = "btrfs";
               extraArgs = [ "--force" ];
