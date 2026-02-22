@@ -157,7 +157,7 @@
 
   # swap configuration
   swapDevices = [
-    { device = "/dev/disk/by-partlabel/swap"; }
+    # { device = "/dev/disk/by-partlabel/swap"; }
   ];
 
   # zram configuration

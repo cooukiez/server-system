@@ -26,11 +26,6 @@
               mountOptions = [ "umask=0077" ];
             };
           };
-          swap = {
-            type = "8200";
-            size = "32G";
-            label = "swap";
-          };
           nixos = {
             size = "100%";
             label = "nixos";
