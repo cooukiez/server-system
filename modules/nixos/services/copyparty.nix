@@ -1,3 +1,7 @@
+{
+  pkgs,
+  ...
+}:
 let
   # unsafe password
   copyparty_pm_password = pkgs.writeText "copyparty-pm-password" ''
