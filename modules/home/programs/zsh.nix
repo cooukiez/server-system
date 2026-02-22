@@ -7,6 +7,7 @@
 
 {
   userConfig,
+  hostname,
   ...
 }:
 {

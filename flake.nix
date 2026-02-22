@@ -102,6 +102,7 @@
               inputs
               outputs
               hostSystem
+              hostname
               staticIP
               ;
             userConfig = users.${username};
