@@ -3,7 +3,7 @@ let
   dhsServer = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICIQ0kQfmyndwCBlktgBvsAk3WBagbu0kKFGm+5ofXXv root@dhs";
 in
 {
-  "secrets/stalwart-admin.age".publicKeys = [
+  "stalwart-admin.age".publicKeys = [
     adminUser
     dhsServer
   ];
