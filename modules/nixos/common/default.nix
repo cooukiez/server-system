@@ -98,7 +98,6 @@
     zip
 
     # encryption
-    agenix-cli
     inputs.agenix.packages.${hostSystem}.default
 
     # nixos related
