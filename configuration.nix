@@ -24,6 +24,7 @@
 
     # import other system configuration modules
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.dashboard
     inputs.self.nixosModules.services
 
     inputs.copyparty.nixosModules.default
@@ -119,8 +120,12 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
+        # 20 # allow ftp data
+        # 21 # allow ftp control
         22 # allow openssh
-        3923 # allow copyparty port
+        80 # allow http
+        3923 # allow copyparty
+        8082 # allow dashboard
       ];
       allowedUDPPorts = [ ];
     };

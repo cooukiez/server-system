@@ -8,5 +8,6 @@
 {
   # list module files here
   common = import ./common;
+  dashboard = import ./dashboard;
   services = import ./services;
 }
