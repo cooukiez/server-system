@@ -2,18 +2,21 @@
 set -euo pipefail
 
 REPO_DIR="/etc/nixos"
-
 cd "$REPO_DIR"
 
-echo "flake.lock" >> .git/info/exclude
+cp "./flake.lock" "/tmp/flake.lock"
 
-git stash push -u -m "stash new files before pull"
-echo "Stashed untracked files."
+echo "Cleaning up local state..."
+# -f: force, -d: directories, -x: ignored files
+git clean -fdx 
 
-echo "Pulling latest changes from flake..."
-git pull --rebase
+echo "Fetching latest changes..."
+git fetch origin
 
-echo "Pull complete."
+echo "Resetting to remote HEAD..."
+# This makes your local branch an exact copy of the remote
+git reset --hard origin/$(git branch --show-current)
 
-git stash pop
-echo "Restored local files."
+echo "System repo is now synced and clean."
+
+cp "/tmp/flake.lock" "./flake.lock"
