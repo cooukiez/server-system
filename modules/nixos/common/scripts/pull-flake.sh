@@ -16,3 +16,5 @@ echo "Resetting to remote HEAD..."
 git reset --hard origin/$(git branch --show-current)
 
 echo "System repo is now synced and clean."
+
+fix-perms /etc/nixos
