@@ -1,3 +1,9 @@
+let
+  # unsafe password
+  copyparty_pm_password = pkgs.writeText "copyparty-pm-password" ''
+    fileupload123
+  '';
+in
 {
   # copyparty, fast file sharing server
   services.copyparty = {
