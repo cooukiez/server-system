@@ -23,8 +23,8 @@
     ./hardware-configuration.nix
 
     # import other system configuration modules
-    # inputs.self.nixosModules.common
-    # inputs.self.nixosModules.services
+    inputs.self.nixosModules.common
+    inputs.self.nixosModules.services
 
     inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
