@@ -11,8 +11,6 @@
 }:
 {
   imports = [
-    ./copyparty.nix
-    ./open-ssh.nix
     ./stalwart.nix
   ];
 
