@@ -9,4 +9,11 @@
   imports = [
     ./open-ssh.nix
   ];
+
+  # enable firmware update services
+  services.fwupd.enable = true;
+  # enable devmon for device management
+  services.devmon.enable = true;
+  # network statistics
+  services.vnstat.enable = true;
 }
