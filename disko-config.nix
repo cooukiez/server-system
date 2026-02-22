@@ -1,8 +1,8 @@
 /*
   disko-config.nix
 
-  created by ludw
-  on 2026-02-18
+  part of der-home-server
+  created 2026-02-21
 */
 
 { lib, ... }:

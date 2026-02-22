@@ -34,6 +34,7 @@ in
     lazydocker
     lazygit
     ngrok
+    powertop
     procs
     pull-flake
     ripgrep

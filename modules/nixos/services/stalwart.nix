@@ -1,3 +1,10 @@
+/*
+  modules/nixos/services/stalwart.nix
+
+  part of der-home-server
+  created 2026-02-22
+*/
+
 {
   config,
   pkgs,

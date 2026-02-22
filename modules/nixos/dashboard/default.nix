@@ -1,8 +1,8 @@
 /*
   modules/nixos/dashboard/default.nix
 
-  created by ludw
-  on 2026-02-20
+  part of der-home-server
+  created 2026-02-22
 */
 
 {
@@ -92,18 +92,6 @@
           }
         ];
       }
-      {
-        "File Transfer" = [
-          {
-            "Copyparty" = {
-              icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/copyparty.svg";
-              href = "http://${staticIP}:3923";
-              description = "File Server & Gallery";
-              ping = "${staticIP}";
-            };
-          }
-        ];
-      }
     ];
 
     settings = {
@@ -120,16 +108,6 @@
         };
       };
     };
-  };
-
-  services.glances = {
-    enable = true;
-    # ensure it listens to subnet IP
-    extraArgs = [
-      "-w"
-      "-B"
-      "${staticIP}"
-    ];
   };
 
   services.nginx = {
