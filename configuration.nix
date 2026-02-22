@@ -150,7 +150,7 @@
       "docker"
     ];
     password = "CHANGE-ME";
-    # shell = pkgs.zsh;
+    shell = pkgs.zsh;
   }) users;
 
   # passwordless sudo
