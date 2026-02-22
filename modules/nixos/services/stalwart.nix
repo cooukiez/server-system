@@ -9,11 +9,13 @@
   age.secrets.stalwart-admin-pw = {
     file = ../../../secrets/stalwart-admin.age;
     owner = "stalwart-mail";
+    group = "stalwart-mail";
   };
 
   age.secrets.stalwart-ludwig-pw = {
     file = ../../../secrets/stalwart-ludwig.age;
     owner = "stalwart-mail";
+    group = "stalwart-mail";
   };
 
   services.stalwart-mail = {
@@ -62,7 +64,7 @@
 
       authentication.fallback-admin = {
         user = "admin";
-        secret = "admin"; # "%{file:${config.age.secrets.stalwart-admin-pw.path}}%";
+        secret = config.age.secrets.stalwart-admin-pw.path;
       };
     };
   };
