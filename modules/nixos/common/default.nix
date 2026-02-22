@@ -38,6 +38,9 @@
     # LIBVA_DRIVER_NAME = "iHD";
   };
 
+  # enable all terminfo
+  environment.enableAllTerminfo = true;
+
   programs.nix-ld.enable = true;
 
   programs.nh = {
