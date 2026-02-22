@@ -134,7 +134,7 @@
     LC_TELEPHONE = "en_IE.UTF-8";
     LC_TIME = "en_IE.UTF-8";
   };
-  console.keyMap = "de";
+  console.keyMap = "us";
 
   # PATH configuration
   environment.localBinInPath = true;
