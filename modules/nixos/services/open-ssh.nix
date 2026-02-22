@@ -8,7 +8,11 @@
 {
   services.openssh = {
     enable = true;
+    ports = [ 22 ];
     settings = {
+      UseDns = true;
+      X11Forwarding = false;
+
       # opinionated: forbid root login through SSH
       PermitRootLogin = "no";
       # opinionated: keys and passwords

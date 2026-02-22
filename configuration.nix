@@ -119,6 +119,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
+        22 # allow openssh
         3923 # allow copyparty port
       ];
       allowedUDPPorts = [ ];
