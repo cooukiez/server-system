@@ -9,6 +9,9 @@
   pkgs,
   ...
 }:
+let
+  fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
+in
 {
   # nvim base editor
   programs.neovim.enable = true;
@@ -22,6 +25,7 @@
     ctop
     dfc
     dua
+    fix-perms
     glances
     gping
     htop
