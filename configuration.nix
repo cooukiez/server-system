@@ -115,6 +115,14 @@
     defaultGateway = "192.168.178.1";
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        3923 # allow copyparty port
+      ];
+      allowedUDPPorts = [ ];
+    };
   };
 
   # timezone
