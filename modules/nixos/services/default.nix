@@ -9,6 +9,7 @@
   imports = [
     ./copyparty.nix
     ./open-ssh.nix
+    ./stalwart.nix
   ];
 
   # enable firmware update services

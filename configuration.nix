@@ -28,7 +28,6 @@
     inputs.self.nixosModules.services
 
     inputs.copyparty.nixosModules.default
-    inputs.agenix.nixosModules.default
   ];
   nixpkgs = {
     # add overlays here

@@ -84,6 +84,7 @@
             # main config file
             ./configuration.nix
 
+            inputs.agenix.nixosModules.default
             inputs.hardware.nixosModules.lenovo-thinkpad-x1-yoga
           ];
         };
