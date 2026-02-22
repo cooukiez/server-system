@@ -60,7 +60,7 @@
       };
 
       storage.directory = "in-memory";
-      session.auth.directory = "'in-memory'";
+      session.auth.directory = "in-memory";
 
       authentication.fallback-admin = {
         user = "admin";
