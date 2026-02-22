@@ -76,7 +76,7 @@
                 type = "glances";
                 url = "http://${staticIP}:61208";
                 version = 4;
-                metric = "network:wlp0s20f3";
+                metric = "network:eth0";
               };
             };
           }
