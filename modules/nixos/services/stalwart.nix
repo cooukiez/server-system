@@ -52,7 +52,7 @@
         principals = [
           {
             class = "individual";
-            name = "Ludwig";
+            name = "ludwig";
             secret = "%{file:${config.age.secrets.stalwart-ludwig-pw.path}}%";
             email = [ "ludwig.geyer@mailbox.org" ];
           }
