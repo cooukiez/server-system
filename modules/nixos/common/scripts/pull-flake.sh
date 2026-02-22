@@ -4,8 +4,6 @@ set -euo pipefail
 REPO_DIR="/etc/nixos"
 cd "$REPO_DIR"
 
-cp "./flake.lock" "/tmp/flake.lock"
-
 echo "Cleaning up local state..."
 # -f: force, -d: directories, -x: ignored files
 git clean -fdx 
@@ -18,5 +16,3 @@ echo "Resetting to remote HEAD..."
 git reset --hard origin/$(git branch --show-current)
 
 echo "System repo is now synced and clean."
-
-cp "/tmp/flake.lock" "./flake.lock"
