@@ -4,7 +4,7 @@
 }:
 let
   # unsafe password
-  copyparty_pm_password = pkgs.writeText "copyparty-pm-password" ''
+  copypartyPassword = pkgs.writeText "copyparty-password" ''
     fileupload123
   '';
 in
@@ -21,7 +21,7 @@ in
 
     accounts = {
       pm = {
-        passwordFile = "${copyparty_pm_password}";
+        passwordFile = "${copypartyPassword}";
       };
     };
 

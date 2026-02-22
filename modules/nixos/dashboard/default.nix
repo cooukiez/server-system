@@ -107,7 +107,7 @@
     ];
 
     settings = {
-      title = "lvl";
+      title = "homeserver";
       headerStyle = "clean";
       layout = {
         "System Monitor" = {
