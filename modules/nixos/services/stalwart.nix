@@ -6,8 +6,13 @@
   ...
 }:
 {
-  age.secrets.stalwart-pw = {
+  age.secrets.stalwart-admin-pw = {
     file = ../../../secrets/stalwart-admin.age;
+    owner = "stalwart-mail";
+  };
+
+  age.secrets.stalwart-ludwig-pw = {
+    file = ../../../secrets/stalwart-ludwig.age;
     owner = "stalwart-mail";
   };
 
@@ -17,16 +22,17 @@
     settings = {
       server = {
         hostname = hostname;
-        tls.enable = false; # Set to true if you manage certs via ACME/Caddy
+        # Set to true if you manage certs via ACME/Caddy
+        tls.enable = false;
 
         listener = {
-
           # dav & management listeners
           jmap = {
             bind = [ "${staticIP}:8080" ];
             url = "http://${staticIP}:8080";
             protocol = "http";
           };
+
           management = {
             bind = [ "${staticIP}:9080" ];
             protocol = "http";
@@ -44,9 +50,9 @@
         principals = [
           {
             class = "individual";
-            name = "Home User";
-            secret = "foobar123"; # Or use %{file:/etc/stalwart/user-pw}%
-            email = [ "user@example.local" ];
+            name = "Ludwig";
+            secret = "%{file:${config.age.secrets.stalwart-ludwig-pw.path}}%";
+            email = [ "ludwig.geyer@mailbox.org" ];
           }
         ];
       };
@@ -56,7 +62,7 @@
 
       authentication.fallback-admin = {
         user = "admin";
-        secret = "%{file:${config.age.secrets.stalwart-pw.path}}%";
+        secret = "%{file:${config.age.secrets.stalwart-admin-pw.path}}%";
       };
     };
   };
