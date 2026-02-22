@@ -62,7 +62,7 @@
 
       authentication.fallback-admin = {
         user = "admin";
-        secret = "%{file:${config.age.secrets.stalwart-admin-pw.path}}%";
+        secret = "admin"; # "%{file:${config.age.secrets.stalwart-admin-pw.path}}%";
       };
     };
   };
