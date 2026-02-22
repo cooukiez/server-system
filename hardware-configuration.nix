@@ -15,7 +15,6 @@
   modulesPath,
   ...
 }:
-
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -30,43 +29,42 @@
     "sd_mod"
     "sdhci_pci"
   ];
+
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
     fsType = "btrfs";
     options = [ "subvol=root" ];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
     fsType = "btrfs";
     options = [ "subvol=nix" ];
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
     fsType = "btrfs";
     options = [ "subvol=home" ];
   };
 
   fileSystems."/var" = {
-    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
     fsType = "btrfs";
     options = [ "subvol=var" ];
   };
 
   fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/2fd28719-a6f7-428a-8eb8-3bf2d81bb1f5";
+    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
     fsType = "btrfs";
     options = [ "subvol=data" ];
   };
 
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/bf82d1d9-f61b-48b7-b1ab-605240561086"; }
-  ];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
