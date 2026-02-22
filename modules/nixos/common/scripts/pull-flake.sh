@@ -5,6 +5,8 @@ REPO_DIR="/etc/nixos"
 
 cd "$REPO_DIR"
 
+echo "flake.lock" >> .git/info/exclude
+
 git stash push -u -m "stash new files before pull"
 echo "Stashed untracked files."
 
