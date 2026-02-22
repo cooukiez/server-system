@@ -38,8 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    copyparty.url = "github:9001/copyparty";
     agenix.url = "github:ryantm/agenix";
+    copyparty.url = "github:9001/copyparty";
   };
 
   outputs =

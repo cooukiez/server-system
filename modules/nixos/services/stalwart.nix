@@ -4,13 +4,12 @@
   staticIP,
   ...
 }:
-let
-  # unsafe password
-  stalwartAdminPassword = pkgs.writeText "stalwart-admin-password" ''
-    fileupload123
-  '';
-in
 {
+  age.secrets.stalwart-pw = {
+    file = ../../../secrets/stalwart-admin.age;
+    owner = "stalwart-mail";
+  };
+
   services.stalwart-mail = {
     enable = true;
     openFirewall = true;
@@ -56,7 +55,7 @@ in
 
       authentication.fallback-admin = {
         user = "admin";
-        secret = stalwartAdminPassword;
+        secret = "%{file:${config.age.secrets.stalwart-pw.path}}%";
       };
     };
   };
