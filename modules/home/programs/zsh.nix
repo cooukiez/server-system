@@ -49,7 +49,7 @@
       autoload -U colors && colors
 
       # set prompt style
-      PROMPT='%F{yellow}%n%F{blue}@%m%f:%~$ '
+      PROMPT='%F{green}%n%F{yellow}@%m%f:%~$ '
     '';
 
     history.size = 16384;
