@@ -33,8 +33,6 @@
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
-
-      inputs.copyparty.overlays.default
     ];
 
     # configure nixpkgs instance
@@ -119,9 +117,9 @@
         # 20 # allow ftp data
         # 21 # allow ftp control
         22 # allow openssh
-        80 # allow http
-        3923 # allow copyparty
-        8082 # allow dashboard
+        # 80 # allow http
+        # 3923 # allow copyparty
+        # 8082 # allow dashboard
       ];
       allowedUDPPorts = [ ];
     };
