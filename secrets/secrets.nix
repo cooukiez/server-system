@@ -11,13 +11,15 @@ let
 in
 {
   # stalwart keys
-  "stalwart-admin.age".publicKeys = [
-    adminUser
-    dhsServer
-  ];
+  /*
+    "stalwart-admin.age".publicKeys = [
+      adminUser
+      dhsServer
+    ];
 
-  "stalwart-ludwig.age".publicKeys = [
-    adminUser
-    dhsServer
-  ];
+    "stalwart-ludwig.age".publicKeys = [
+      adminUser
+      dhsServer
+    ];
+  */
 }

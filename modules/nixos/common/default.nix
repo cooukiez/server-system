@@ -58,8 +58,6 @@
     # core packages, sorted alphabetically
     age
     cifs-utils
-    clang
-    cmake
     coreutils
     cpuid
     curl
@@ -70,10 +68,7 @@
     fastfetch
     fdupes
     fzf
-    gcc
-    gdb
     git
-    glib
     gnumake
     gnutar
     inetutils

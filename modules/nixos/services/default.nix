@@ -10,10 +10,6 @@
   ...
 }:
 {
-  imports = [
-    ./stalwart.nix
-  ];
-
   # enable firmware update services
   services.fwupd.enable = true;
   # enable devmon for device management
@@ -33,15 +29,5 @@
       # opinionated: keys and passwords
       PasswordAuthentication = true;
     };
-  };
-
-  services.glances = {
-    enable = true;
-    # ensure it listens to subnet IP
-    extraArgs = [
-      "-w"
-      "-B"
-      "${staticIP}"
-    ];
   };
 }

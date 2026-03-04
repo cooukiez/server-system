@@ -39,7 +39,6 @@
     };
 
     agenix.url = "github:ryantm/agenix";
-    copyparty.url = "github:9001/copyparty";
   };
 
   outputs =

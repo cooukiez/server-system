@@ -27,7 +27,6 @@ in
     dfc
     dua
     fix-perms
-    glances
     gping
     htop
     httpie

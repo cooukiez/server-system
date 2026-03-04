@@ -26,8 +26,6 @@
     inputs.self.nixosModules.common
     inputs.self.nixosModules.dashboard
     inputs.self.nixosModules.services
-
-    inputs.copyparty.nixosModules.default
   ];
   nixpkgs = {
     # add overlays here
