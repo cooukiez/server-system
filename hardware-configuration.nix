@@ -15,6 +15,7 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -35,33 +36,8 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
-    fsType = "btrfs";
-    options = [ "subvol=root" ];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
-    fsType = "btrfs";
-    options = [ "subvol=nix" ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
-    fsType = "btrfs";
-    options = [ "subvol=home" ];
-  };
-
-  fileSystems."/var" = {
-    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
-    fsType = "btrfs";
-    options = [ "subvol=var" ];
-  };
-
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/6d60b9aa-512d-4f94-8462-3fe58432fdea";
-    fsType = "btrfs";
-    options = [ "subvol=data" ];
+    device = "/dev/disk/by-uuid/bbf5c02f-aeb1-4d1b-9e62-2fbb03ee69d8";
+    fsType = "ext4";
   };
 
   swapDevices = [ ];
