@@ -11,7 +11,7 @@
 }:
 let
   fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
-  pull-flake = pkgs.writeShellScriptBin "pull-flake" (builtins.readFile ./scripts/pull-flake.sh);
+  sync-flake = pkgs.writeShellScriptBin "sync-flake" (builtins.readFile ./scripts/sync-flake.sh);
 in
 {
   # nvim base editor
@@ -35,7 +35,7 @@ in
     ngrok
     powertop
     procs
-    pull-flake
+    sync-flake
     ripgrep
     speedtest-cli
     transfer-sh
