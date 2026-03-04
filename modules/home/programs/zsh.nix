@@ -22,12 +22,12 @@
       ll = "ls -la";
       gs = "git status";
 
-      us = "pull-flake && sudo nixos-rebuild switch --upgrade-all --no-write-lock-file";
-      uh = "pull-flake && home-manager switch --flake /etc/nixos#${userConfig.name}@${hostname} --no-write-lock-file";
+      us = "pull-flake && sudo nixos-rebuild switch --upgrade-all";
+      uh = "pull-flake && home-manager switch --flake /etc/nixos#${userConfig.name}@${hostname}";
 
-      nus = "pull-flake && nh os switch /etc/nixos#nixosConfigurations.${hostname} --update --no-write-lock-file";
-      nuh = "pull-flake && nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@${hostname}.activationPackage --no-write-lock-file";
-      nuuh = "pull-flake && nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@${hostname}.activationPackage --update --no-write-lock-file";
+      nus = "pull-flake && nh os switch /etc/nixos#nixosConfigurations.${hostname} --update";
+      nuh = "pull-flake && nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@${hostname}.activationPackage";
+      nuuh = "pull-flake && nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@${hostname}.activationPackage --update";
 
       cns = "sudo sh -c 'nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d && nix-store --optimise && nix-store --verify --check-contents --repair'";
       cnh = "nix-env --delete-generations old && nix profile wipe-history && home-manager expire-generations \"-0 seconds\" && nix-collect-garbage -d";
