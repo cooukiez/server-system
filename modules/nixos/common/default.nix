@@ -21,6 +21,7 @@
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
+    GIT_SSH_COMMAND = "ssh -i /home/admin/.ssh/id_ed25519";
   };
 
   # enable all terminfo
