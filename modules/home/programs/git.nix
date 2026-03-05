@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/git.nix
+
+  part of der-home-server
+  created 2026-03-04
+*/
+
 {
   programs.git = {
     enable = true;
