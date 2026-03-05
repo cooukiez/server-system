@@ -10,6 +10,10 @@
   ...
 }:
 {
+  imports = [
+    ./containers.nix
+  ];
+
   # enable firmware update services
   services.fwupd.enable = true;
   # enable devmon for device management
