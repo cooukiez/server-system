@@ -1,2 +1,4 @@
+
 # server-system
- nixos home server system
+
+nixos home server system
