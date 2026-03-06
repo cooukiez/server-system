@@ -32,21 +32,22 @@
       };
   };
 
-  # not fetching
-
   services.caddy = {
     enable = true;
     virtualHosts."homepage.lan" = {
       useACMEHost = null;
       extraConfig = ''
-        tls internal
+        tls internal {
+          install_trust false
+        }
+
         reverse_proxy 10.1.1.2:3000
       '';
     };
   };
 
   security.pki.certificates = [
-    (builtins.readFile /var/lib/caddy/.local/share/caddy/pki/authorities/local/root.crt)
+    (builtins.readFile ./caddy-root.crt)
   ];
 
   networking.hosts = {
