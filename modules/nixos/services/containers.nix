@@ -88,6 +88,7 @@
 
     virtualHosts."homepage.lan:61208" = {
       extraConfig = ''
+        tls internal
         reverse_proxy 10.1.1.3:61208
       '';
     };
