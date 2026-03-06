@@ -24,7 +24,37 @@
       {
         services.homepage-dashboard = {
           enable = true;
-          listenPort = 3000;
+          listenPort = 8082;
+
+          widgets = [
+            {
+              greeting = {
+                text = "My Laptop";
+                help = true;
+              };
+            }
+            {
+              datetime = {
+                format = {
+                  date = "long";
+                  time = "short";
+                  hour12 = false;
+                };
+              };
+            }
+            {
+              openmeteo = {
+                label = "Weather";
+
+                # location: berlin
+                latitude = "52.52";
+                longitude = "13.40";
+
+                units = "metric";
+                cache = 5;
+              };
+            }
+          ];
 
           services = [
             {
@@ -72,13 +102,33 @@
               ];
             }
           ];
+
+          settings = {
+            title = "lvl";
+            headerStyle = "clean";
+            background = "/background.png";
+
+            layout = {
+              "System Monitor" = {
+                style = "row";
+                columns = 4;
+              };
+              "File Management" = {
+                style = "row";
+                columns = 4;
+              };
+              "Network Storage" = {
+                style = "row";
+                columns = 4;
+              };
+            };
+          };
         };
 
         systemd.services.homepage-dashboard.environment = {
           HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homepage.lan,${staticIP}";
         };
 
-        networking.firewall.allowedTCPPorts = [ 3000 ];
         system.stateVersion = "25.11";
       };
   };
@@ -111,7 +161,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        reverse_proxy 10.1.1.2:3000
+        reverse_proxy 10.1.1.2:8082
       '';
     };
 
