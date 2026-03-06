@@ -32,6 +32,8 @@
       };
   };
 
+  # not fetching
+
   services.caddy = {
     enable = true;
     virtualHosts."homepage.lan" = {
