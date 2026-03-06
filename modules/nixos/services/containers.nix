@@ -25,28 +25,23 @@
         services.homepage-dashboard = {
           enable = true;
           listenPort = 3000;
-          settings = {
-            services = [
-              {
-                "System Monitor" = [
-                  {
-                    "CPU Usage" = {
-                      widget = {
-                        type = "glances";
-                        url = "http://homepage.lan:61208";
-                        version = 4;
-                        metric = "cpu";
-                      };
+
+          services = [
+            {
+              "System Monitor" = [
+                {
+                  "CPU Usage" = {
+                    widget = {
+                      type = "glances";
+                      url = "http://${staticIP}:61208";
+                      version = 4;
+                      metric = "cpu";
                     };
-                  }
-                ];
-              }
-            ];
-
-            layout = {
-
-            };
-          };
+                  };
+                }
+              ];
+            }
+          ];
         };
 
         systemd.services.homepage-dashboard.environment = {
