@@ -32,7 +32,7 @@
         };
 
         systemd.services.homepage-dashboard.environment = {
-          HOMEPAGE_ALLOWED_HOSTS = "homepage.lan ${staticIP}";
+          HOMEPAGE_ALLOWED_HOSTS = "homepage.lan,${staticIP}";
         };
 
         networking.firewall.allowedTCPPorts = [ 3000 ];
