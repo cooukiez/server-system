@@ -28,6 +28,7 @@
             base = "http://homepage.lan";
             allowed_hosts = [
               "homepage.lan"
+              staticIP
             ];
 
             layout = {
