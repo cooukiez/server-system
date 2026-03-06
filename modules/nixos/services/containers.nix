@@ -64,7 +64,11 @@
       {
         services.glances = {
           enable = true;
-          extraArgs = [ "-w" ];
+          extraArgs = [
+            "-w"
+            "-B"
+            "0.0.0.0"
+          ];
         };
         networking.firewall.allowedTCPPorts = [ 61208 ];
         system.stateVersion = "25.11";
