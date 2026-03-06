@@ -42,6 +42,6 @@
   };
 
   networking.hosts = {
-    "127.0.0.1" = [ "homepage.server" ];
+    "192.168.178.51" = [ "homepage.server" ];
   };
 }
