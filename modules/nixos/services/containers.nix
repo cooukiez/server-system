@@ -34,7 +34,7 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."homepage.server" = {
+    virtualHosts."homepage.lan" = {
       extraConfig = ''
         reverse_proxy 10.1.1.2:3000
       '';
@@ -42,6 +42,6 @@
   };
 
   networking.hosts = {
-    "192.168.178.51" = [ "homepage.server" ];
+    "127.0.0.1" = [ "homepage.lan" ];
   };
 }
