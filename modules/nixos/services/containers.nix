@@ -129,6 +129,7 @@
           HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homepage.lan,${staticIP}";
         };
 
+        networking.firewall.allowedTCPPorts = [ 8082 ];
         system.stateVersion = "25.11";
       };
   };
@@ -150,6 +151,7 @@
             "0.0.0.0"
           ];
         };
+
         networking.firewall.allowedTCPPorts = [ 61208 ];
         system.stateVersion = "25.11";
       };
