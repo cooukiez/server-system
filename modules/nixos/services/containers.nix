@@ -36,8 +36,8 @@
     enable = true;
     virtualHosts."homepage.lan" = {
       useACMEHost = null;
-      tls.internal = true;
       extraConfig = ''
+        tls internal
         reverse_proxy 10.1.1.2:3000
       '';
     };
