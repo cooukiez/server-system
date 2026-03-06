@@ -1,4 +1,8 @@
 {
+  staticIP,
+  ...
+}:
+{
   boot.enableContainers = true;
   virtualisation.containers.enable = true;
 
@@ -21,6 +25,11 @@
           enable = true;
           listenPort = 3000;
           settings = {
+            base = "http://homepage.lan";
+            allowed_hosts = [
+              "homepage.lan"
+            ];
+
             layout = {
 
             };
@@ -48,6 +57,6 @@
   ];
 
   networking.hosts = {
-    "192.168.178.51" = [ "homepage.lan" ];
+    staticIP = [ "homepage.lan" ];
   };
 }
