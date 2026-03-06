@@ -1,4 +1,5 @@
 {
+  lib,
   staticIP,
   ...
 }:
@@ -29,10 +30,10 @@
 
             };
           };
+        };
 
-          environment = {
-            HOMEPAGE_ALLOWED_HOSTS = "homepage.lan,${staticIP}";
-          };
+        systemd.services.homepage-dashboard.environment = {
+          HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homepage.lan,${staticIP}";
         };
 
         networking.firewall.allowedTCPPorts = [ 3000 ];
