@@ -118,6 +118,7 @@
         # 21 # allow ftp control
         22 # allow openssh
         # 80 # allow http
+        443 # allow https
         # 3923 # allow copyparty
         # 8082 # allow dashboard
       ];
