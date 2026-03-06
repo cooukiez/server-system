@@ -33,7 +33,7 @@
                   "CPU Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://${staticIP}:61208";
+                      url = "https://homepage.lan:61208";
                       version = 4;
                       metric = "cpu";
                     };
