@@ -25,16 +25,14 @@
           enable = true;
           listenPort = 3000;
           settings = {
-            base = "http://homepage.lan";
-            allowed_hosts = [
-              "homepage.lan"
-              staticIP
-            ];
-
             layout = {
 
             };
           };
+        };
+
+        systemd.services.homepage-dashboard.environment = {
+          HOMEPAGE_ALLOWED_HOSTS = "homepage.lan ${staticIP}";
         };
 
         networking.firewall.allowedTCPPorts = [ 3000 ];
