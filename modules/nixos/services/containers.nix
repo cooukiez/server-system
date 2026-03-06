@@ -37,10 +37,7 @@
     virtualHosts."homepage.lan" = {
       useACMEHost = null;
       extraConfig = ''
-        tls internal {
-          install_trust false
-        }
-
+        tls internal
         reverse_proxy 10.1.1.2:3000
       '';
     };
