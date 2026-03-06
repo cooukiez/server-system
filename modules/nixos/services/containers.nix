@@ -29,10 +29,10 @@
 
             };
           };
-        };
 
-        systemd.services.homepage-dashboard.environment = {
-          HOMEPAGE_ALLOWED_HOSTS = "homepage.lan,${staticIP}";
+          environment = {
+            HOMEPAGE_ALLOWED_HOSTS = "homepage.lan,${staticIP}";
+          };
         };
 
         networking.firewall.allowedTCPPorts = [ 3000 ];
