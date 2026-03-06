@@ -35,14 +35,19 @@
   services.caddy = {
     enable = true;
     virtualHosts."homepage.lan" = {
+      useACMEHost = null;
+      tls.internal = true;
       extraConfig = ''
-        tls internal
         reverse_proxy 10.1.1.2:3000
       '';
     };
   };
 
+  security.pki.certificates = [
+    (builtins.readFile /var/lib/caddy/.local/share/caddy/pki/authorities/local/root.crt)
+  ];
+
   networking.hosts = {
-    "127.0.0.1" = [ "homepage.lan" ];
+    "192.168.178.51" = [ "homepage.lan" ];
   };
 }
