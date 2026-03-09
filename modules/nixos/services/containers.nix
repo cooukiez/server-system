@@ -177,7 +177,7 @@
           };
         };
 
-        networking.firewall.allowedTCPPorts = [ 8000 ];
+        networking.firewall.allowedTCPPorts = [ 28981 ];
         system.stateVersion = "25.11";
       };
   };
@@ -196,7 +196,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        reverse_proxy 10.1.1.4:8000
+        reverse_proxy 10.1.1.4:28981
       '';
     };
 
