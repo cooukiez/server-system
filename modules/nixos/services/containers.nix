@@ -27,6 +27,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
+        header Strict-Transport-Security "max-age=31536000;"
         reverse_proxy 10.1.1.2:8000
       '';
     };
@@ -35,6 +36,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
+        header Strict-Transport-Security "max-age=31536000;"
         reverse_proxy 10.1.1.3:8000
       '';
     };
@@ -43,6 +45,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
+        header Strict-Transport-Security "max-age=31536000;"
         reverse_proxy 10.1.1.4:8000
       '';
     };
@@ -51,6 +54,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
+        header Strict-Transport-Security "max-age=31536000;"
         reverse_proxy 10.1.1.5:8000
       '';
     };

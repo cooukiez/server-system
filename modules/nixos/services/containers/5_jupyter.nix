@@ -1,5 +1,4 @@
 {
-
   containers.jupyter = {
     autoStart = true;
     privateNetwork = true;
