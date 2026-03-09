@@ -32,6 +32,12 @@
       '';
     };
 
+    virtualHosts."http://home.lan" = {
+      extraConfig = ''
+        redir https://{host}{uri}
+      '';
+    };
+
     virtualHosts."glances.home.lan" = {
       useACMEHost = null;
       extraConfig = ''
