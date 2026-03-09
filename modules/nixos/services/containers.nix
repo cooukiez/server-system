@@ -172,6 +172,9 @@
           enable = true;
           passwordFile = "/etc/paperless-admin-pass";
 
+          port = 28981;
+          address = "0.0.0.0";
+
           settings = {
             PAPERLESS_TIME_ZONE = "Europe/Berlin";
           };
