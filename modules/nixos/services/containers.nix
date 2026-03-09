@@ -176,6 +176,7 @@
           address = "0.0.0.0";
 
           settings = {
+            PAPERLESS_OCR_LANGUAGE = "deu+eng";
             PAPERLESS_TIME_ZONE = "Europe/Berlin";
 
             PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://homepage.lan:8000,https://${staticIP}:8000";
