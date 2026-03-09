@@ -24,11 +24,14 @@
   services.caddy = {
     enable = true;
 
+    globalConfig = ''
+      auto_https emits_redirects
+    '';
+
     virtualHosts."home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        # Force browser to always use HTTPS for this domain and subdomains
         header Strict-Transport-Security "max-age=31536000; includeSubDomains"
         reverse_proxy 10.1.1.2:8000
       '';
