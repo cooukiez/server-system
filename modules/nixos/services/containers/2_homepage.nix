@@ -55,7 +55,7 @@
                   "CPU Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:61208";
+                      url = "http://10.1.1.3:8000";
                       version = 4;
                       metric = "cpu";
                     };
@@ -65,7 +65,7 @@
                   "Memory Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:61208";
+                      url = "http://10.1.1.3:8000";
                       version = 4;
                       metric = "memory";
                     };
@@ -75,7 +75,7 @@
                   "Network Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:61208";
+                      url = "http://10.1.1.3:8000";
                       version = 4;
                       metric = "network:eth0";
                     };
@@ -85,7 +85,7 @@
                   "Disk I/O" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:61208";
+                      url = "http://10.1.1.3:8000";
                       version = 4;
                       metric = "disk:sda1";
                     };
