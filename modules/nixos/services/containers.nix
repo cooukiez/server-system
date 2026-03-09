@@ -189,6 +189,57 @@
       };
   };
 
+  containers.jupyter = {
+    autoStart = true;
+    privateNetwork = true;
+    hostAddress = "10.1.1.1";
+    localAddress = "10.1.1.5";
+
+    config =
+      { config, pkgs, ... }:
+      let
+        pythonEnv = pkgs.python3.withPackages (
+          ps: with ps; [
+            notebook
+            pandas
+            numpy
+            matplotlib
+            scipy
+            seaborn
+          ]
+        );
+      in
+      {
+        services.jupyterhub = {
+          enable = true;
+
+          host = "0.0.0.0";
+          port = 8000;
+
+          jupyterhubEnv = pkgs.python3.withPackages (
+            ps:
+            (dsPackages ps)
+            ++ [
+              ps.jupyterhub
+              ps.jupyterhub-systemdspawner
+            ]
+          );
+
+          jupyterlabEnv = pkgs.python3.withPackages (
+            ps:
+            (dsPackages ps)
+            ++ [
+              ps.jupyterhub
+              ps.jupyterlab
+            ]
+          );
+        };
+
+        networking.firewall.allowedTCPPorts = [ 8000 ];
+        system.stateVersion = "25.11";
+      };
+  };
+
   services.caddy = {
     enable = true;
     virtualHosts."homepage.lan" = {
@@ -204,6 +255,14 @@
       extraConfig = ''
         tls internal
         reverse_proxy 10.1.1.4:28981
+      '';
+    };
+
+    virtualHosts."homepage.lan:8888" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        reverse_proxy 10.1.1.5:8000
       '';
     };
 
