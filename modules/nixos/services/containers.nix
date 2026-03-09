@@ -14,6 +14,7 @@
   boot.enableContainers = true;
   virtualisation.containers.enable = true;
 
+  # networking configuration
   networking.nat = {
     enable = true;
     internalInterfaces = [ "ve-+" ];
@@ -26,23 +27,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        reverse_proxy 10.1.1.2:3000
-      '';
-    };
-
-    virtualHosts."paperless.home.lan" = {
-      useACMEHost = null;
-      extraConfig = ''
-        tls internal
-        reverse_proxy 10.1.1.4:28981
-      '';
-    };
-
-    virtualHosts."jupyter.home.lan" = {
-      useACMEHost = null;
-      extraConfig = ''
-        tls internal
-        reverse_proxy 10.1.1.5:8888
+        reverse_proxy 10.1.1.2:8000
       '';
     };
 
@@ -50,7 +35,23 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        reverse_proxy 10.1.1.3:61208
+        reverse_proxy 10.1.1.3:8000
+      '';
+    };
+
+    virtualHosts."paperless.home.lan" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        reverse_proxy 10.1.1.4:8000
+      '';
+    };
+
+    virtualHosts."jupyter.home.lan" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        reverse_proxy 10.1.1.5:8000
       '';
     };
   };
