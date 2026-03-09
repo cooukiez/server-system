@@ -198,27 +198,27 @@
     config =
       { config, pkgs, ... }:
       let
-        pythonEnv = pkgs.python3.withPackages (
+        dsPackages =
           ps: with ps; [
-            notebook
             pandas
             numpy
             matplotlib
             scipy
             seaborn
-          ]
-        );
+            notebook
+            jupyterlab
+          ];
       in
       {
         services.jupyterhub = {
           enable = true;
 
           host = "0.0.0.0";
-          port = 8000;
+          port = 8888;
 
           jupyterhubEnv = pkgs.python3.withPackages (
             ps:
-            (pythonEnv ps)
+            (dsPackages ps)
             ++ [
               ps.jupyterhub
               ps.jupyterhub-systemdspawner
@@ -227,7 +227,7 @@
 
           jupyterlabEnv = pkgs.python3.withPackages (
             ps:
-            (pythonEnv ps)
+            (dsPackages ps)
             ++ [
               ps.jupyterhub
               ps.jupyterlab
@@ -262,7 +262,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        reverse_proxy 10.1.1.5:8000
+        reverse_proxy 10.1.1.5:8888
       '';
     };
 
