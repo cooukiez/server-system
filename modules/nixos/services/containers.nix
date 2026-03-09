@@ -126,7 +126,7 @@
         };
 
         systemd.services.homepage-dashboard.environment = {
-          HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homepage.lan,${staticIP}";
+          HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "home.lan,${staticIP}";
         };
 
         networking.firewall.allowedTCPPorts = [ 3000 ];
@@ -179,8 +179,8 @@
             PAPERLESS_OCR_LANGUAGE = "deu+eng";
             PAPERLESS_TIME_ZONE = "Europe/Berlin";
 
-            PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://homepage.lan:8000,https://${staticIP}:8000";
-            PAPERLESS_URL = "https://homepage.lan:8000";
+            PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://home.lan:8000,https://${staticIP}:8000";
+            PAPERLESS_URL = "https://home.lan:8000";
           };
         };
 
@@ -242,7 +242,7 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."homepage.lan" = {
+    virtualHosts."home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
@@ -250,7 +250,7 @@
       '';
     };
 
-    virtualHosts."homepage.lan:8000" = {
+    virtualHosts."paperless.home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
@@ -258,7 +258,7 @@
       '';
     };
 
-    virtualHosts."homepage.lan:8888" = {
+    virtualHosts."jupyter.home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
@@ -266,7 +266,7 @@
       '';
     };
 
-    virtualHosts."homepage.lan:61208" = {
+    virtualHosts."glances.home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
@@ -275,11 +275,7 @@
     };
   };
 
-  security.pki.certificates = [
-    (builtins.readFile ./caddy-root.crt)
-  ];
-
   networking.hosts = {
-    staticIP = [ "homepage.lan" ];
+    staticIP = [ "home.lan" ];
   };
 }
