@@ -178,7 +178,7 @@
           settings = {
             PAPERLESS_TIME_ZONE = "Europe/Berlin";
 
-            PAPERLESS_ALLOWED_HOSTS = "homepage.lan,${staticIP}";
+            PAPERLESS_ALLOWED_HOSTS = "homepage.lan,${staticIP},10.1.1.4";
             PAPERLESS_CSRF_TRUSTED_ORIGINS = "https://homepage.lan";
           };
         };
