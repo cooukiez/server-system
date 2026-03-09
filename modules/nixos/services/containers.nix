@@ -104,7 +104,7 @@
           ];
 
           settings = {
-            title = "lvl";
+            title = "homeserver";
             headerStyle = "clean";
             background = "/background.png";
 

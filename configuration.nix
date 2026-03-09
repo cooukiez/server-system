@@ -118,8 +118,7 @@
         # 21 # allow ftp control
         22 # allow openssh
         443 # allow https
-        # 3923 # allow copyparty
-        8082 # allow dashboard
+        8000 # allow paperless
         61208 # allow glances
       ];
       allowedUDPPorts = [ ];
