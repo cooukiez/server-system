@@ -46,7 +46,7 @@
       '';
     };
 
-    virtualHosts."pl.home.lan" = {
+    virtualHosts."paperless.home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
