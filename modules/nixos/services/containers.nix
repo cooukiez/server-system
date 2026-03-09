@@ -24,7 +24,7 @@
       {
         services.homepage-dashboard = {
           enable = true;
-          listenPort = 8082;
+          listenPort = 3000;
 
           widgets = [
             {
@@ -129,7 +129,7 @@
           HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homepage.lan,${staticIP}";
         };
 
-        networking.firewall.allowedTCPPorts = [ 8082 ];
+        networking.firewall.allowedTCPPorts = [ 3000 ];
         system.stateVersion = "25.11";
       };
   };
@@ -157,17 +157,51 @@
       };
   };
 
+  containers.paperless = {
+    autoStart = true;
+    privateNetwork = true;
+    hostAddress = "10.1.1.1";
+    localAddress = "10.1.1.4";
+
+    config =
+      { config, pkgs, ... }:
+      {
+        environment.etc."paperless-admin-pass".text = "admin";
+
+        services.paperless = {
+          enable = true;
+          passwordFile = "/etc/paperless-admin-pass";
+
+          settings = {
+            PAPERLESS_TIME_ZONE = "Europe/Berlin";
+          };
+        };
+
+        networking.firewall.allowedTCPPorts = [ 8000 ];
+        system.stateVersion = "25.11";
+      };
+  };
+
   services.caddy = {
     enable = true;
     virtualHosts."homepage.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        reverse_proxy 10.1.1.2:8082
+        reverse_proxy 10.1.1.2:3000
+      '';
+    };
+
+    virtualHosts."homepage.lan:8000" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        reverse_proxy 10.1.1.4:8000
       '';
     };
 
     virtualHosts."homepage.lan:61208" = {
+      useACMEHost = null;
       extraConfig = ''
         tls internal
         reverse_proxy 10.1.1.3:61208
