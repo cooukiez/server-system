@@ -23,18 +23,14 @@
 
   services.caddy = {
     enable = true;
+
     virtualHosts."home.lan" = {
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        header Strict-Transport-Security "max-age=31536000;"
+        # Force browser to always use HTTPS for this domain and subdomains
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
         reverse_proxy 10.1.1.2:8000
-      '';
-    };
-
-    virtualHosts."http://home.lan" = {
-      extraConfig = ''
-        redir https://{host}{uri}
       '';
     };
 
@@ -42,7 +38,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        header Strict-Transport-Security "max-age=31536000;"
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
         reverse_proxy 10.1.1.3:8000
       '';
     };
@@ -51,7 +47,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        header Strict-Transport-Security "max-age=31536000;"
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
         reverse_proxy 10.1.1.4:8000
       '';
     };
@@ -60,7 +56,7 @@
       useACMEHost = null;
       extraConfig = ''
         tls internal
-        header Strict-Transport-Security "max-age=31536000;"
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
         reverse_proxy 10.1.1.5:8000
       '';
     };
