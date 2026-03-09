@@ -119,6 +119,7 @@
         22 # allow openssh
         443 # allow https
         8000 # allow paperless
+        8888 # allow jupyterhub
         61208 # allow glances
       ];
       allowedUDPPorts = [ ];
