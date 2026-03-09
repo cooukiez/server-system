@@ -218,7 +218,7 @@
 
           jupyterhubEnv = pkgs.python3.withPackages (
             ps:
-            (dsPackages ps)
+            (pythonEnv ps)
             ++ [
               ps.jupyterhub
               ps.jupyterhub-systemdspawner
@@ -227,7 +227,7 @@
 
           jupyterlabEnv = pkgs.python3.withPackages (
             ps:
-            (dsPackages ps)
+            (pythonEnv ps)
             ++ [
               ps.jupyterhub
               ps.jupyterlab
