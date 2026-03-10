@@ -35,16 +35,14 @@
             ]
           );
 
-          /*
-            jupyterlabEnv = pkgs.python3.withPackages (
-              ps:
-              (dsPackages ps)
-              ++ [
-                ps.jupyterhub
-                ps.jupyterlab
-              ]
-            );
-          */
+          jupyterlabEnv = pkgs.python3.withPackages (
+            ps:
+            (dsPackages ps)
+            ++ [
+              ps.jupyterhub
+              ps.jupyterlab
+            ]
+          );
 
           extraConfig = ''
             c.Authenticator.allowed_users = { 'admin', 'hub'}
