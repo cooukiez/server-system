@@ -37,17 +37,17 @@
 
               rewrites = [
                 {
-                  enabled = true;
+                  enable = true;
                   domain = "home.lan";
                   answer = "${staticIP}";
                 }
                 {
-                  enabled = true;
+                  enable = true;
                   domain = "*.home.lan";
                   answer = "${staticIP}";
                 }
                 {
-                  enabled = true;
+                  enable = true;
                   domain = "*.home.lan.fritz.box";
                   answer = "${staticIP}";
                 }
