@@ -54,17 +54,22 @@
                 "1.1.1.1"
                 "9.9.9.9"
               ];
+            };
 
+            filters = {
               rewrites = [
                 {
+                  enabled = true;
                   domain = "home.lan";
                   answer = "${staticIP}";
                 }
                 {
+                  enabled = true;
                   domain = "*.home.lan";
                   answer = "${staticIP}";
                 }
                 {
+                  enabled = true;
                   domain = "*.home.lan.fritz.box";
                   answer = "${staticIP}";
                 }
