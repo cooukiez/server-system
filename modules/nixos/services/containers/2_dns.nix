@@ -42,8 +42,11 @@
                   answer = "${staticIP}";
                 }
                 {
-                  # all subdomains as well
                   domain = "*.home.lan";
+                  answer = "${staticIP}";
+                }
+                {
+                  domain = "*.home.lan.fritz.box";
                   answer = "${staticIP}";
                 }
               ];
