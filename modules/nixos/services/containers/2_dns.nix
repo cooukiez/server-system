@@ -33,6 +33,13 @@
           enable = true;
 
           settings = {
+            users = [
+              {
+                name = "admin";
+                password = "$2y$10$X5mC73Amnv/z7yR6GinKMOOTd7XyZnfZXNNGSaDQl4Sl3xFFkjl4u";
+              }
+            ];
+
             dns = {
               bind_hosts = [ "0.0.0.0" ];
               port = 53;

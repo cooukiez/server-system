@@ -20,6 +20,7 @@ in
   environment.systemPackages = with pkgs; [
     # cli tools, sorted alphabetically
     aria2
+    apacheHttpd
     bandwhich
     bench
     btop
