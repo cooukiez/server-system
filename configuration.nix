@@ -101,12 +101,20 @@
   networking = {
     hostName = hostname;
     useDHCP = false;
+
     interfaces.eth0.ipv4.addresses = [
+      {
+        address = "192.168.178.50";
+        prefixLength = 24;
+      }
+    ];
+    interfaces.wlp2s0.ipv4.addresses = [
       {
         address = staticIP;
         prefixLength = 24;
       }
     ];
+
     defaultGateway = "192.168.178.1";
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
