@@ -45,6 +45,11 @@
           );
         };
 
+        users.users.hub = {
+          isNormalUser = true;
+          password = "dunckerhub";
+        };
+
         networking.firewall.allowedTCPPorts = [ 8000 ];
         system.stateVersion = "25.11";
       };
