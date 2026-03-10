@@ -56,25 +56,23 @@
               ];
             };
 
-            filters = {
-              rewrites = [
-                {
-                  enabled = true;
-                  domain = "home.lan";
-                  answer = "${staticIP}";
-                }
-                {
-                  enabled = true;
-                  domain = "*.home.lan";
-                  answer = "${staticIP}";
-                }
-                {
-                  enabled = true;
-                  domain = "*.home.lan.fritz.box";
-                  answer = "${staticIP}";
-                }
-              ];
-            };
+            filters = [
+              {
+                enabled = true;
+                domain = "home.lan";
+                answer = "${staticIP}";
+              }
+              {
+                enabled = true;
+                domain = "*.home.lan";
+                answer = "${staticIP}";
+              }
+              {
+                enabled = true;
+                domain = "*.home.lan.fritz.box";
+                answer = "${staticIP}";
+              }
+            ];
           };
         };
 
