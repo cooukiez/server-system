@@ -24,10 +24,6 @@
   services.caddy = {
     enable = true;
 
-    globalConfig = ''
-      auto_https emits_redirects
-    '';
-
     virtualHosts."home.lan" = {
       useACMEHost = null;
       extraConfig = ''
