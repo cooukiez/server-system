@@ -46,6 +46,7 @@
               port = 53;
 
               upstream_mode = "fastest_addr";
+              upstream_timeout = "2s";
               upstream_dns = [
                 "1.1.1.1"
                 "8.8.8.8"
