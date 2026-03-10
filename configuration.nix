@@ -117,6 +117,7 @@
         # 20 # allow ftp data
         # 21 # allow ftp control
         22 # allow openssh
+        80 # allow http for redirect
         443 # allow https
       ];
       allowedUDPPorts = [ ];
