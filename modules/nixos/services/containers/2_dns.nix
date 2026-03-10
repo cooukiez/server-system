@@ -50,6 +50,11 @@
                 "9.9.9.9"
               ];
 
+              bootstrap_dns = [
+                "1.1.1.1"
+                "9.9.9.9"
+              ];
+
               rewrites = [
                 {
                   domain = "home.lan";
