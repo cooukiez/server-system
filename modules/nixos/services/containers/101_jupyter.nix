@@ -47,6 +47,7 @@
 
         users.users.hub = {
           isNormalUser = true;
+          home = "/home/hub";
           password = "dunckerhub";
         };
 
