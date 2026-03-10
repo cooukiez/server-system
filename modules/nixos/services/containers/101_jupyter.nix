@@ -47,8 +47,8 @@
 
         users.users.hub = {
           isNormalUser = true;
-          home = "/home/hub";
-          password = "dunckerhub";
+          initialPassword = "dunckerhub";
+          extraGroups = [ "wheel" ];
         };
 
         networking.firewall.allowedTCPPorts = [ 8000 ];
