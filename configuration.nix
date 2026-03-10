@@ -116,6 +116,7 @@
       allowedTCPPorts = [
         22 # allow openssh
         53 # allow dns
+        80 # allow http for redirect
         443 # allow https
       ];
       allowedUDPPorts = [
