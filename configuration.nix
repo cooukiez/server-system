@@ -118,6 +118,7 @@
         53 # allow dns
         80 # allow http for redirect
         443 # allow https
+        3000 # backup dns
       ];
       allowedUDPPorts = [
         53 # allow dns

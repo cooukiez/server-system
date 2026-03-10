@@ -17,6 +17,13 @@
         hostPort = 53;
         containerPort = 53;
       }
+
+      # backup ui
+      {
+        protocol = "tcp";
+        hostPort = 3000;
+        containerPort = 3000;
+      }
     ];
 
     config =
@@ -37,17 +44,14 @@
 
               rewrites = [
                 {
-                  enable = true;
                   domain = "home.lan";
                   answer = "${staticIP}";
                 }
                 {
-                  enable = true;
                   domain = "*.home.lan";
                   answer = "${staticIP}";
                 }
                 {
-                  enable = true;
                   domain = "*.home.lan.fritz.box";
                   answer = "${staticIP}";
                 }
