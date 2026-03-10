@@ -32,6 +32,7 @@
         services.adguardhome = {
           enable = true;
 
+          mutableSettings = false;
           settings = {
             users = [
               {
