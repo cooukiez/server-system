@@ -33,7 +33,6 @@
               upstream_dns = [
                 "1.1.1.1"
                 "9.9.9.9"
-                "[/home.lan/]127.0.0.1"
               ];
             };
             filtering = {
