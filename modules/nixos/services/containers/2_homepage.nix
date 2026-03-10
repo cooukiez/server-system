@@ -21,7 +21,7 @@
           widgets = [
             {
               greeting = {
-                text = "My Laptop";
+                text = "Homeserver";
                 help = true;
               };
             }
