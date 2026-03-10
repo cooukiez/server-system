@@ -27,6 +27,15 @@
   services.caddy = {
     enable = true;
 
+    virtualHosts."dns.home.lan" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        reverse_proxy 10.1.1.2:3000
+      '';
+    };
+
     virtualHosts."home.lan" = {
       useACMEHost = null;
       extraConfig = ''
