@@ -45,7 +45,7 @@
               bind_hosts = [ "0.0.0.0" ];
               port = 53;
 
-              upstream_mode = "fastest_addr";
+              upstream_mode = "parallel";
               upstream_dns = [
                 "1.1.1.1"
                 "8.8.8.8"
