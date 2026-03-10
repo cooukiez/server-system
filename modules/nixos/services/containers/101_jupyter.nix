@@ -43,9 +43,20 @@
               ps.jupyterlab
             ]
           );
+
+          extraConfig = ''
+            c.Authenticator.allowed_users = { 'admin', 'hub'}
+            c.Authenticator.admin_users = { 'admin' }
+          '';
         };
 
         users.users.hub = {
+          isNormalUser = true;
+          initialPassword = "dunckerhub";
+          extraGroups = [ "wheel" ];
+        };
+
+        users.users.admin = {
           isNormalUser = true;
           initialPassword = "dunckerhub";
           extraGroups = [ "wheel" ];
