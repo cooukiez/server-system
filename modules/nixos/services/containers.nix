@@ -10,8 +10,8 @@
     ./containers/20_homepage.nix
     ./containers/21_glances.nix
 
-    ./containers/101_paperless.nix
-    ./containers/102_jupyter.nix
+    ./containers/101_jupyter.nix
+    ./containers/102_paperless.nix
   ];
 
   boot.enableContainers = true;
