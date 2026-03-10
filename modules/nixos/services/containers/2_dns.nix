@@ -45,7 +45,7 @@
               bind_hosts = [ "0.0.0.0" ];
               port = 53;
 
-              upstream_mode = "parallel";
+              upstream_mode = "fastest_addr";
               upstream_dns = [
                 "1.1.1.1"
                 "8.8.8.8"
@@ -57,10 +57,6 @@
                 "8.8.8.8"
                 "9.9.9.9"
               ];
-
-              cache_size = 4194304;
-              cache_ttl_min = 3600;
-              cache_ttl_max = 86400;
             };
 
             filtering = {
@@ -84,6 +80,8 @@
             };
           };
         };
+
+        networking.defaultGateway = "10.1.1.1";
 
         networking.firewall.allowedTCPPorts = [
           53
