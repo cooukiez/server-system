@@ -9,7 +9,7 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "10.1.1.1";
-    localAddress = "10.1.1.2";
+    localAddress = "10.1.1.20";
 
     config =
       { config, pkgs, ... }:
@@ -55,7 +55,7 @@
                   "CPU Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:8000";
+                      url = "http://10.1.1.21:8000";
                       version = 4;
                       metric = "cpu";
                     };
@@ -65,7 +65,7 @@
                   "Memory Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:8000";
+                      url = "http://10.1.1.21:8000";
                       version = 4;
                       metric = "memory";
                     };
@@ -75,7 +75,7 @@
                   "Network Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:8000";
+                      url = "http://10.1.1.21:8000";
                       version = 4;
                       metric = "network:eth0";
                     };
@@ -85,7 +85,7 @@
                   "Disk I/O" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.3:8000";
+                      url = "http://10.1.1.21:8000";
                       version = 4;
                       metric = "disk:sda1";
                     };

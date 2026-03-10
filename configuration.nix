@@ -114,12 +114,13 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        # 20 # allow ftp data
-        # 21 # allow ftp control
         22 # allow openssh
+        53 # allow dns
         443 # allow https
       ];
-      allowedUDPPorts = [ ];
+      allowedUDPPorts = [
+        53 # allow dns
+      ];
     };
   };
 

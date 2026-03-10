@@ -1,0 +1,59 @@
+{ staticIP, ... }:
+{
+  containers.dns = {
+    autoStart = true;
+    privateNetwork = true;
+    hostAddress = "10.1.1.1";
+    localAddress = "10.1.1.2";
+
+    forwardPorts = [
+      {
+        protocol = "tcp";
+        hostPort = 53;
+        containerPort = 53;
+      }
+      {
+        protocol = "udp";
+        hostPort = 53;
+        containerPort = 53;
+      }
+    ];
+
+    config =
+      { config, pkgs, ... }:
+      {
+        services.adguardhome = {
+          enable = true;
+
+          settings = {
+            dns = {
+              bind_hosts = [ "0.0.0.0" ];
+              port = 53;
+
+              upstream_dns = [
+                "1.1.1.1"
+                "9.9.9.9"
+              ];
+            };
+            filtering = {
+              rewrites = [
+                {
+                  domain = "home.lan";
+                  answer = "${staticIP}";
+                }
+                {
+                  # all subdomains as well
+                  domain = "*.home.lan";
+                  answer = "${staticIP}";
+                }
+              ];
+            };
+          };
+        };
+
+        networking.firewall.allowedTCPPorts = [ 53 ];
+        networking.firewall.allowedUDPPorts = [ 53 ];
+        system.stateVersion = "25.11";
+      };
+  };
+}

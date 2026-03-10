@@ -7,7 +7,7 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "10.1.1.1";
-    localAddress = "10.1.1.4";
+    localAddress = "10.1.1.102";
 
     config =
       { config, pkgs, ... }:

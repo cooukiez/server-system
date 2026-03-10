@@ -5,10 +5,13 @@
 }:
 {
   imports = [
-    ./containers/2_homepage.nix
-    ./containers/3_glances.nix
-    ./containers/4_paperless.nix
-    ./containers/5_jupyter.nix
+    ./containers/2_dns.nix
+
+    ./containers/20_homepage.nix
+    ./containers/21_glances.nix
+
+    ./containers/101_paperless.nix
+    ./containers/102_jupyter.nix
   ];
 
   boot.enableContainers = true;
@@ -33,7 +36,7 @@
       extraConfig = ''
         tls internal
         header Strict-Transport-Security "max-age=31536000; includeSubDomains"
-        reverse_proxy 10.1.1.2:8000
+        reverse_proxy 10.1.1.20:8000
       '';
     };
 
@@ -42,16 +45,7 @@
       extraConfig = ''
         tls internal
         header Strict-Transport-Security "max-age=31536000; includeSubDomains"
-        reverse_proxy 10.1.1.3:8000
-      '';
-    };
-
-    virtualHosts."paperless.home.lan" = {
-      useACMEHost = null;
-      extraConfig = ''
-        tls internal
-        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
-        reverse_proxy 10.1.1.4:8000
+        reverse_proxy 10.1.1.21:8000
       '';
     };
 
@@ -60,7 +54,16 @@
       extraConfig = ''
         tls internal
         header Strict-Transport-Security "max-age=31536000; includeSubDomains"
-        reverse_proxy 10.1.1.5:8000
+        reverse_proxy 10.1.1.101:8000
+      '';
+    };
+
+    virtualHosts."paperless.home.lan" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        reverse_proxy 10.1.1.102:8000
       '';
     };
   };
