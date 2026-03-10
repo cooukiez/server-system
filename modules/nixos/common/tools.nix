@@ -26,6 +26,7 @@ in
     btop
     ctop
     dfc
+    dig
     dua
     fix-perms
     gping
