@@ -6,36 +6,24 @@ cd "$REPO_DIR"
 
 BRANCH=$(git branch --show-current)
 
-echo "Resetting all files except flake.lock..."
-
-# discard changes to all tracked files, excluding flake.lock
-git checkout HEAD -- . ':(exclude)flake.lock' >/dev/null 2>&1 || true
-
-echo "Cleaning up local state (untracked files)..."
-# -f: force, -d: directories, -x: ignored files
-git clean -fdx 
-
-echo "Checking for changes in flake.lock..."
-# check for both staged and unstaged changes to flake.lock relative to HEAD
-if ! git diff --quiet HEAD -- flake.lock 2>/dev/null; then
-    echo "Changes detected in flake.lock. Committing..."
+# check if flake.lock actually has changes
+if ! git diff --quiet flake.lock 2>/dev/null || ! git diff --cached --quiet flake.lock 2>/dev/null; then
+    echo "Changes detected in flake.lock. Preparing to push..."
+    
     git add flake.lock
-    git commit -m "chore: auto-update flake.lock"
+    git commit -m "chore: auto-update flake.lock" -- flake.lock
+
+    echo "Fetching and merging upstream..."
+    git fetch origin
+    git merge origin/"$BRANCH" -X ours --no-edit
+
+    echo "Pushing flake.lock to remote..."
+    git push origin "$BRANCH"
 else
-    echo "No local changes."
+    echo "No changes found in flake.lock."
 fi
 
-echo "Fetching latest changes..."
-git fetch origin
-
-echo "Syncing with upstream..."
-# merge upstream changes
-# (e.g., upstream also modified flake.lock), '-X theirs' forces upstream to win
-git merge origin/"$BRANCH" -X theirs --no-edit -m "chore: merge upstream changes"
-
-echo "Pushing updates to remote..."
-git push origin "$BRANCH"
-
-echo "System repo is now synced and clean."
-
+echo "Running permissions fix..."
 fix-perms /etc/nixos
+
+echo "Sync complete. Local files remain unchanged in your working directory."
