@@ -21,7 +21,7 @@
   networking.nat = {
     enable = true;
     internalInterfaces = [ "ve-+" ];
-    externalInterface = "wlp2s0";
+    externalInterface = "eth0";
   };
 
   services.caddy = {
