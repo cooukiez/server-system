@@ -104,13 +104,13 @@
 
     interfaces.eth0.ipv4.addresses = [
       {
-        address = "192.168.178.50";
+        address = staticIP;
         prefixLength = 24;
       }
     ];
     interfaces.wlp2s0.ipv4.addresses = [
       {
-        address = staticIP;
+        address = "192.168.178.50";
         prefixLength = 24;
       }
     ];
