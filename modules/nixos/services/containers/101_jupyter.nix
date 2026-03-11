@@ -5,6 +5,20 @@
     hostAddress = "10.1.1.1";
     localAddress = "10.1.1.101";
 
+    bindMounts = {
+      # data in jupyter stored in home directories
+      "/home" = {
+        hostPath = "/var/lib/jupyter_home"; 
+        isReadOnly = false;
+      };
+
+      # persistent storage
+      "/var/lib/jupyter" = {
+        hostPath = "/var/lib/jupyter"; 
+        isReadOnly = false;
+      };
+    };
+
     config =
       { config, pkgs, ... }:
       {

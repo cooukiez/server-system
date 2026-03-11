@@ -9,6 +9,13 @@
     hostAddress = "10.1.1.1";
     localAddress = "10.1.1.102";
 
+    bindMounts = {
+      "/var/lib/paperless" = {
+        hostPath = "/var/lib/paperless";
+        isReadOnly = false;
+      };
+    };
+
     config =
       { config, pkgs, ... }:
       {

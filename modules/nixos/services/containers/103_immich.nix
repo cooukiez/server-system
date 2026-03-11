@@ -5,9 +5,19 @@
     hostAddress = "10.1.1.1";
     localAddress = "10.1.1.102";
 
-    bindMounts."/dev/dri" = { 
-      hostPath = "/dev/dri"; 
-      isReadOnly = false; 
+    bindMounts = {
+      # gpu acceleration
+      "/dev/dri" = { 
+        hostPath = "/dev/dri"; 
+        isReadOnly = false; 
+      };
+      
+      # persistent storage
+      "/var/lib/immich" = {
+        hostPath = "/var/lib/immich";
+        isReadOnly = false;
+        mountPoint = "/var/lib/immich";
+      };
     };
 
     config = { config, pkgs, ... }: {

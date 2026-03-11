@@ -4,7 +4,6 @@
   ...
 }:
 {
-
   containers.homepage = {
     autoStart = true;
     privateNetwork = true;
