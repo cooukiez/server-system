@@ -3,6 +3,9 @@
   staticIP,
   ...
 }:
+let
+  glancesAddress = "http://10.1.1.21:8000";
+in
 {
   containers.homepage = {
     autoStart = true;
@@ -54,7 +57,7 @@
                   "CPU Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.21:8000";
+                      url = glancesAddress;
                       version = 4;
                       metric = "cpu";
                     };
@@ -64,7 +67,7 @@
                   "Memory Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.21:8000";
+                      url = glancesAddress;
                       version = 4;
                       metric = "memory";
                     };
@@ -74,7 +77,7 @@
                   "Network Usage" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.21:8000";
+                      url = glancesAddress;
                       version = 4;
                       metric = "network:eth0";
                     };
@@ -84,7 +87,7 @@
                   "Disk I/O" = {
                     widget = {
                       type = "glances";
-                      url = "http://10.1.1.21:8000";
+                      url = glancesAddress;
                       version = 4;
                       metric = "disk:sda1";
                     };

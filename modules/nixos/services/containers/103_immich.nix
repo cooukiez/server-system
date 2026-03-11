@@ -3,11 +3,11 @@
     autoStart = true;
     privateNetwork = true;
     hostAddress = "10.1.1.1";
-    localAddress = "10.1.1.102";
+    localAddress = "10.1.1.103";
 
     bindMounts = {
       # gpu acceleration
-      "/dev/dri" = { 
+      "/dev/dri" = {
         hostPath = "/dev/dri"; 
         isReadOnly = false; 
       };
