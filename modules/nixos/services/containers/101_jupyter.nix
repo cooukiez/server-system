@@ -7,18 +7,6 @@
 
     config =
       { config, pkgs, ... }:
-      let
-        dsPackages =
-          ps: with ps; [
-            pandas
-            numpy
-            matplotlib
-            scipy
-            seaborn
-            notebook
-            jupyterlab
-          ];
-      in
       {
         services.jupyterhub = {
           enable = true;
@@ -26,23 +14,43 @@
           host = "0.0.0.0";
           port = 8000;
 
-          jupyterhubEnv = pkgs.python3.withPackages (
-            ps:
-            (dsPackages ps)
-            ++ [
-              ps.jupyterhub
-              ps.jupyterhub-systemdspawner
-            ]
-          );
+          jupyterhubEnv = pkgs.python3.withPackages (p: with p; [
+            jupyterhub
+            jupyterhub-systemdspawner
+          ]);
 
-          jupyterlabEnv = pkgs.python3.withPackages (
-            ps:
-            (dsPackages ps)
-            ++ [
-              ps.jupyterhub
-              ps.jupyterlab
-            ]
-          );
+          kernels = 
+            {
+              python3 = let
+                env = (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
+                        ipykernel
+
+                        pandas
+                        numpy
+                        matplotlib
+                        scipy
+                        seaborn
+                      ]));
+              in {
+                displayName = "Python 3 (with packages)";
+                argv = [
+                  "${env.interpreter}"
+                  "-m"
+                  "ipykernel_launcher"
+                  "-f"
+                  "{connection_file}"
+                ];
+                language = "python";
+                logo32 = "${env}/${env.sitePackages}/ipykernel/resources/logo-32x32.png";
+                logo64 = "${env}/${env.sitePackages}/ipykernel/resources/logo-64x64.png";
+              };
+            };
+
+          jupyterlabEnv = pkgs.python3.withPackages (p: with p; [
+            jupyterhub
+            jupyterlab
+            notebook
+          ]);
 
           extraConfig = ''
             c.Authenticator.allowed_users = { 'admin', 'hub'}
@@ -53,7 +61,6 @@
         users.users.hub = {
           isNormalUser = true;
           initialPassword = "dunckerhub";
-          extraGroups = [ "wheel" ];
         };
 
         users.users.admin = {
