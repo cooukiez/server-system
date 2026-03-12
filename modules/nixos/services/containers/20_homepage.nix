@@ -4,6 +4,7 @@
   ...
 }:
 let
+  adguardHomeAddress = "http://10.1.1.2:3000";
   glancesAddress = "http://10.1.1.21:8000";
 in
 {
@@ -48,9 +49,28 @@ in
                 cache = 5;
               };
             }
+            {
+              resources = {
+                label = "Server";
+                disk = "/";
+              };
+            }
           ];
 
           services = [
+            {
+              "Networking" = [
+                {
+                  "AdGuard Home" = {
+                    widget = {
+                      url = adguardHomeAddress;
+                      username = "admin";
+                      password = "password";
+                    };
+                  }; 
+                }
+              ];
+            }
             {
               "System Monitor" = [
                 {
@@ -103,15 +123,11 @@ in
             background = "/background.png";
 
             layout = {
+              "Networking" = {
+                style = "row";
+                columns = 5;
+              };
               "System Monitor" = {
-                style = "row";
-                columns = 4;
-              };
-              "File Management" = {
-                style = "row";
-                columns = 4;
-              };
-              "Network Storage" = {
                 style = "row";
                 columns = 4;
               };
