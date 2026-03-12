@@ -71,6 +71,15 @@
         reverse_proxy 10.1.1.102:8000
       '';
     };
+
+    virtualHosts."immich.home.lan" = {
+      useACMEHost = null;
+      extraConfig = ''
+        tls internal
+        header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        reverse_proxy 10.1.1.103:8000
+      '';
+    };
   };
 
   networking.hosts = {
