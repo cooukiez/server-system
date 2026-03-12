@@ -12,6 +12,7 @@
 
     ./containers/101_jupyter.nix
     ./containers/102_paperless.nix
+    ./containers/103_immich.nix
   ];
 
   boot.enableContainers = true;

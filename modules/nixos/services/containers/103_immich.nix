@@ -8,10 +8,10 @@
     bindMounts = {
       # gpu acceleration
       "/dev/dri" = {
-        hostPath = "/dev/dri"; 
-        isReadOnly = false; 
+        hostPath = "/dev/dri";
+        isReadOnly = false;
       };
-      
+
       # persistent storage
       "/var/lib/immich" = {
         hostPath = "/var/lib/immich";
@@ -20,33 +20,38 @@
       };
     };
 
-    config = { config, pkgs, ... }: {
-      services.immich = {
-        enable = true;
-        port = 8000;
-        host = "0.0.0.0";
-        
-        # set to null for auto-detection of hardware acceleration
-        accelerationDevices = null; 
-      };
+    config =
+      { config, pkgs, ... }:
+      {
+        services.immich = {
+          enable = true;
+          port = 8000;
+          host = "0.0.0.0";
 
-      users.users.immich.extraGroups = [ "video" "render" ];
+          # set to null for auto-detection of hardware acceleration
+          accelerationDevices = null;
+        };
 
-      hardware.graphics = {
-        enable = true;
-        extraPackages = with pkgs; [
-          intel-vaapi-driver
-          vaapiVdpau
-          libvdpau-va-gl
+        users.users.immich.extraGroups = [
+          "video"
+          "render"
         ];
-      };
 
-      environment.variables = {
-        LIBVA_DRIVER_NAME = "i965";
-      };
+        hardware.graphics = {
+          enable = true;
+          extraPackages = with pkgs; [
+            intel-vaapi-driver
+            vaapiVdpau
+            libvdpau-va-gl
+          ];
+        };
 
-      networking.firewall.allowedTCPPorts = [ 8000 ];
-      system.stateVersion = "25.11";
-    };
+        environment.variables = {
+          LIBVA_DRIVER_NAME = "i965";
+        };
+
+        networking.firewall.allowedTCPPorts = [ 8000 ];
+        system.stateVersion = "25.11";
+      };
   };
 }
